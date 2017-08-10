@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : MonoSingleton<GameManager> {
+public class GUIManager : MonoSingleton<GUIManager> {
 
     private List<BaseDialog> baseDialogs;
     public Transform transfDialog;

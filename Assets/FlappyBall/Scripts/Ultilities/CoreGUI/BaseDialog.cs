@@ -22,6 +22,6 @@ public class BaseDialog : MonoBehaviour {
 
     public void OnCloseDialog()
     {
-        GameManager.Instance.OnHideDialog(this);
+        GUIManager.Instance.OnHideDialog(this);
     }
 }
