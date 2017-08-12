@@ -43,7 +43,7 @@ public class MessageBox : MonoBehaviour {
     }
     public void CloseMessageBox()
     {
-        GUIManager.Instance.CloseMessageBox(this);
+        //GUIManager.Instance.CloseMessageBox(this);
     }
     public void OnShow()
     {

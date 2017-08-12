@@ -17,17 +17,15 @@ public class GameManager : MonoSingleton<GameManager> {
 	public GameState state = GameState.PAUSE;
 	public GameInfo info;
 	public int score;
+	[HideInInspector]
+	public GamePlayDialog play;
 
 	private void Awake()
 	{
 		info = new GameInfo();
 		info.gameHeight = Camera.main.orthographicSize * 2;
 		info.gameWidth = info.gameHeight * Camera.main.aspect;
-	}
-
-	private void Start()
-	{
-		StartGame();
+		GameStartDialog start = GUIManager.Instance.OnShowDialog<GameStartDialog>("Start");
 	}
 	
 	public void StartGame()
@@ -36,9 +34,9 @@ public class GameManager : MonoSingleton<GameManager> {
 		ballManager.OnStart();
 		nestManager.OnStart();
 		state = GameState.PLAY;
+		play.UpdateScore(score);
 	}
-
-	[ContextMenu("Restart")]
+	
 	public void RestartGame()
 	{
 		EndGame();
@@ -62,11 +60,15 @@ public class GameManager : MonoSingleton<GameManager> {
 		ballManager.OnEnd();
 		nestManager.OnEnd();
 		state = GameState.PAUSE;
+
+		GUIManager.Instance.OnHideAllDialog();
+		GameOverDialog over = GUIManager.Instance.OnShowDialog<GameOverDialog>("Over", score);
 	}
 
 	public void AddScore()
 	{
 		score++;
+		play.UpdateScore(score);
 	}
 
 	public void Update()
