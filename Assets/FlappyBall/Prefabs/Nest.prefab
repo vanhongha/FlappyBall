@@ -20,8 +20,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4564234476737934}
   - component: {fileID: 114181657707410942}
-  - component: {fileID: 50859916298425888}
   - component: {fileID: 61527692439717238}
+  - component: {fileID: 50505506029065938}
+  - component: {fileID: 120204041474653250}
   m_Layer: 0
   m_Name: Nest
   m_TagString: Untagged
@@ -42,7 +43,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!50 &50859916298425888
+--- !u!50 &50505506029065938
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 1
@@ -77,10 +78,10 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2.8, y: 0.5}
+    newSize: {x: 2.3076923, y: 2}
+    adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
@@ -98,6 +99,105 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aeb962073ac4200428a942c7cd375ade, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  distance: 1.5
+  distance: 1.25
   obstaclePrefab: {fileID: 1947548029885928, guid: 85491c40585c8514c9e499c2c8964273,
     type: 2}
+  moving: 0
+--- !u!120 &120204041474653250
+LineRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1846720463789090}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_MotionVectors: 0
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Positions:
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 1}
+  m_Parameters:
+    serializedVersion: 2
+    widthMultiplier: 0.1
+    widthCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 0.50000787
+        value: 0.5308586
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 0
+    colorGradient:
+      serializedVersion: 2
+      key0: {r: 1, g: 1, b: 1, a: 1}
+      key1: {r: 1, g: 1, b: 1, a: 0.19607843}
+      key2: {r: 0.7137255, g: 0.6901961, b: 1, a: 1}
+      key3: {r: 0.43137255, g: 0.3019608, b: 0.8392157, a: 1}
+      key4: {r: 0.46666667, g: 0.6784314, b: 0.8039216, a: 0}
+      key5: {r: 0.6784314, g: 0.7372549, b: 0.9137255, a: 0}
+      key6: {r: 1, g: 1, b: 1, a: 0}
+      key7: {r: 0, g: 0, b: 0, a: 0}
+      ctime0: 0
+      ctime1: 65535
+      ctime2: 43947
+      ctime3: 32768
+      ctime4: 47031
+      ctime5: 57054
+      ctime6: 65535
+      ctime7: 0
+      atime0: 0
+      atime1: 32768
+      atime2: 65535
+      atime3: 65535
+      atime4: 0
+      atime5: 0
+      atime6: 0
+      atime7: 0
+      m_Mode: 0
+      m_NumColorKeys: 2
+      m_NumAlphaKeys: 3
+    numCornerVertices: 5
+    numCapVertices: 5
+    alignment: 0
+    textureMode: 1
+    generateLightingData: 1
+  m_UseWorldSpace: 0
+  m_Loop: 0

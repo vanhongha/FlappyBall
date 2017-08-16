@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class NestManager : MonoBehaviour {
 
@@ -15,6 +16,8 @@ public class NestManager : MonoBehaviour {
 	public float speed = 1f;
 	public int maxCount = 2;
 	public bool touchBall = false;
+	[HideInInspector]
+	public bool moving = false;
 
 	protected List<Nest> nests = new List<Nest>();
 	protected GameInfo info;
@@ -26,6 +29,7 @@ public class NestManager : MonoBehaviour {
 
 	public void OnStart()
 	{
+		moving = false;
 		SpawnNest();
 	}
 
@@ -63,7 +67,7 @@ public class NestManager : MonoBehaviour {
 			GameObject nestObject = Instantiate(nestPrefab, transform);
 			nests.Add(nestObject.GetComponent<Nest>());
 			nestObject.transform.position = position;
-			nests[nests.Count - 1].OnStart();
+			nests[nests.Count - 1].OnStart(this.moving);
 			nestObject.transform.rotation = rotation;
 		}
 	}

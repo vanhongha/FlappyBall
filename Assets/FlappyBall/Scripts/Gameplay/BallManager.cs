@@ -7,10 +7,13 @@ public class BallManager : MonoBehaviour {
 	public GameObject ballPrefab;
 	public float speed = 2f;
 	public float force = 2f;
+	[HideInInspector]
+	public float scaleForce = 1f;
 	private Ball ball;
 
 	public void OnStart()
 	{
+		scaleForce = 1f;
 		Vector2 startPosition = new Vector2(transform.position.x - GameManager.Instance.info.gameWidth / 2 + 1f, 0);
 		GameObject ballObject = Instantiate(ballPrefab, startPosition, Quaternion.identity, transform);
 		ball = ballObject.GetComponent<Ball>();
@@ -45,7 +48,7 @@ public class BallManager : MonoBehaviour {
 	{
 		if (ball != null)
 		{
-			ball.AddForce(force);
+			ball.AddForce(force * scaleForce);
 		}
 	}
 

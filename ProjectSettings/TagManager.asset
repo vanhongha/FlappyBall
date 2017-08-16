@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Ball
   - Nest
+  - Border
   layers:
   - Default
   - TransparentFX

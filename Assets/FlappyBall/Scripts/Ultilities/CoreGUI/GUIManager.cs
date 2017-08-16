@@ -50,4 +50,13 @@ public class GUIManager : MonoSingleton<GUIManager> {
                 dialog.OnHide();
         }
     }
+
+	public void OnHideDialogExcept(BaseDialog exception)
+	{
+		foreach (BaseDialog dialog in this.baseDialogs)
+		{
+			if (dialog != null && dialog != exception)
+				dialog.OnHide();
+		}
+	}
 }

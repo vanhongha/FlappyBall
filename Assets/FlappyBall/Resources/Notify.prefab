@@ -341,7 +341,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 0}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -439,6 +439,8 @@ MonoBehaviour:
   accept: {fileID: 114909592736699254}
   decline: {fileID: 114373426534665474}
   close: {fileID: 114506668004803248}
+  acceptText: {fileID: 0}
+  declineText: {fileID: 0}
 --- !u!114 &114398826094473948
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -766,7 +768,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
-  m_SortingLayerID: -597305997
+  m_SortingLayerID: 0
   m_SortingOrder: 100
   m_TargetDisplay: 0
 --- !u!224 &224000319492158204
@@ -984,7 +986,7 @@ RectTransform:
   m_GameObject: {fileID: 1683333025539144}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.000461, y: 1.000461, z: 1.000461}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 224473557148553058}
   - {fileID: 224072314723531780}

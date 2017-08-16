@@ -51,4 +51,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9ddc245784280f4dbd5643fd72c957f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ballExplode: {fileID: 0}
+  inNest: {fileID: 100000, guid: 006dcf19c33b2cd498bfb0a8b4c75f0d, type: 2}
+  tap: {fileID: 100002, guid: bad73d4c8fc18604491f9ae365112d15, type: 2}
+  lose: {fileID: 100000, guid: 1a6f1ff2d3ea3fd49b0093ecc9a852be, type: 2}
+  crash: {fileID: 100000, guid: eb5985801a4246b43b60c3e68afc9c06, type: 2}

@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class StoreDialog : BaseDialog {
 
+	public Text gameName;
 	public Text diamond;
 	public Transform panel;
 	public ToggleGroup group;
@@ -18,11 +20,13 @@ public class StoreDialog : BaseDialog {
 	public override void OnShow(Transform transf, object data)
 	{
 		base.OnShow(transf, data);
+		gameName.text = UserProfile.Instance.gameName;
 		for (int i = 0; i < 15; i++)
 		{
 			GameObject item = Instantiate(itemPrebab, panel);
 			item.GetComponent<ItemBall>().Init(i, 20000, group);
 		}
+		EffectShow();
 	}
 
 	public void OnClickIAP()
@@ -32,7 +36,26 @@ public class StoreDialog : BaseDialog {
 
 	public void OnClickHome()
 	{
-		GUIManager.Instance.OnShowDialog<GameStartDialog>("Start");
-		OnCloseDialog();
+		EffectClose<GameStartDialog>("Start");
+	}
+
+	public void EffectClose<T>(string dialog) where T : BaseDialog
+	{
+		if (checkClick)
+		{
+			return;
+		}
+		checkClick = true;
+
+		Vector3 offset = GameManager.Instance.info.canvasHeight * Vector3.down;
+		transform.DOLocalPath(new Vector3[] { gameName.transform.localPosition + offset }, 0.75f)
+			.OnComplete(delegate { base.OnCloseDialog(); GUIManager.Instance.OnShowDialog<T>(dialog); }); ;
+	}
+
+	public void EffectShow()
+	{
+		Vector3 offset = GameManager.Instance.info.canvasHeight * Vector3.down;
+		transform.localPosition += offset ;
+		gameObject.transform.DOLocalPath(new Vector3[] { transform.localPosition - offset }, 0.75f);
 	}
 }

@@ -5,21 +5,24 @@ using UnityEngine.UI;
 
 public enum NotifyType
 {
-	NOADS, TRANSACTION_SUCCESS, TRANSACTION_FAIL, TRANSACTION_CONFIRM, RESTORE_PURCHASE
+	NOADS, TRANSACTION_SUCCESS, TRANSACTION_FAIL, TRANSACTION_CONFIRM, RESTORE_PURCHASE, RATE
 }
 
-public class NotifyDialog : BaseDialog {
+public class NotifyDialog : BaseDialog
+{
 
 	public Text title;
 	public Text content;
 	public Button accept;
 	public Button decline;
 	public Button close;
+	public Text acceptText;
+	public Text declineText;
 
 	public void OnShow(Transform transf, object data, NotifyType type)
 	{
 		base.OnShow(transf, data);
-		
+
 		if (type == NotifyType.NOADS)
 		{
 			title.text = "REMOVE ADS";
@@ -78,6 +81,29 @@ public class NotifyDialog : BaseDialog {
 			close.onClick.AddListener(delegate { OnCloseDialog(); });
 			decline.gameObject.SetActive(false);
 		}
+
+		if (type == NotifyType.RATE)
+		{
+			title.text = "RATE US";
+			content.text = "Do you like\n" + UserProfile.Instance.gameName;
+			acceptText.text = "Like it";
+			declineText.text = "Not like";
+			accept.onClick.AddListener(delegate { Rate(); });
+			decline.onClick.AddListener(delegate { OnCloseDialog(); });
+			close.onClick.AddListener(delegate { OnCloseDialog(); });
+		}
+	}
+
+	public void Rate()
+	{
+#if UNITY_IOS
+		Application.OpenURL(UserProfile.Instance.iosPath);
+#elif UNITY_ANDROID
+		Application.OpenURL(UserProfile.Instance.androidPath);
+#else
+		Application.OpenURL(UserProfile.Instance.iosPath);
+#endif
+		this.OnCloseDialog();
 	}
 
 	public void BuyNoAds()
@@ -85,15 +111,9 @@ public class NotifyDialog : BaseDialog {
 		Button noAdsButton = (Button)data;
 		IAPManager.Instance.BuyNoAds();
 
-		if (UserProfile.Instance.HasAds())
+		if (!UserProfile.Instance.HasAds())
 		{
-			noAdsButton.GetComponent<Image>().sprite = UserProfile.Instance.hasAds;
-			noAdsButton.interactable = true;
-		}
-		else
-		{
-			noAdsButton.GetComponent<Image>().sprite = UserProfile.Instance.noAds;
-			noAdsButton.interactable = false;
+			noAdsButton.gameObject.SetActive(false);
 		}
 		OnCloseDialog();
 	}

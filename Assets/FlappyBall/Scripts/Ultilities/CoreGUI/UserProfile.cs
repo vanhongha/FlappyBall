@@ -4,6 +4,11 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class UserProfile : MonoSingleton<UserProfile> {
+
+	public string gameName;
+	public string androidPath;
+	public string iosPath;
+
 	public Sprite noSound;
 	public Sprite hasSound;
 	public Sprite noSound_2;

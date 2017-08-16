@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class BaseDialog : MonoBehaviour {
 
-    public object data;
+	protected bool checkClick = false;
+	public object data;
+
     public virtual void OnShow(Transform transf, object data)
     {
         this.transform.SetParent(transf);
@@ -15,12 +17,13 @@ public class BaseDialog : MonoBehaviour {
         this.data = data;
         
     }
+
     public virtual void OnHide()
     {
         Destroy(gameObject);
     }
 
-    public void OnCloseDialog()
+    public virtual void OnCloseDialog()
     {
         GUIManager.Instance.OnHideDialog(this);
     }

@@ -479,9 +479,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 550b5ba746f772742b29d11c85651886, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  grid: {fileID: 1582388329120188}
-  itemPrefab: {fileID: 1408374271280388, guid: d880f41ca6059864493717cfe63fee76, type: 2}
-  modeName: {fileID: 114313303500004944}
+  gameName: {fileID: 114664017684510810}
 --- !u!114 &114976848833301328
 MonoBehaviour:
   m_ObjectHideFlags: 1
