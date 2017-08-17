@@ -354,7 +354,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1654973129137812
 GameObject:
   m_ObjectHideFlags: 1
@@ -703,6 +703,7 @@ MonoBehaviour:
   ball: {fileID: 0}
   buttons: {fileID: 0}
   buttonPlay: {fileID: 0}
+  settings: {fileID: 1067740590705900}
   scoreText: {fileID: 114795954589048004}
   addedDiamond: {fileID: 114951801927172520}
   content: {fileID: 1030096872701722}
@@ -2078,8 +2079,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1974761809381802}
-        m_MethodName: 
+      - m_Target: {fileID: 114110891716304862}
+        m_MethodName: OnClickSettings
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

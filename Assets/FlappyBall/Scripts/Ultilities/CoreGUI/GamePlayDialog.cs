@@ -46,6 +46,7 @@ public class GamePlayDialog : BaseDialog
 				highscoreCup.transform.DOLocalRotate(new Vector3(0, 0, 10f), 2f)
 				.SetLoops(-1, LoopType.Yoyo);
 			});
+			SoundManager.Instance.PlaySfx(SFX.Highscore);
 		}
 		this.effectScore.transform.localScale = Vector2.one * 0.5f;
 		this.effectScore.color = Color.white;
@@ -95,19 +96,16 @@ public class GamePlayDialog : BaseDialog
 		}
 		else if (score < 15)
 		{
-			text = "Prepare...";
+			text = "Game kinda slow";
+		}
+		else if (score == 15)
+		{
+			text = "Let's pump up";
+			GameManager.Instance.ballManager.ChangeSpeed(1.5f);
 		}
 		else if (score < 20)
 		{
-			text = " to change...";
-		}
-		else if (score == 20)
-		{
-			text = "a comment";
-		}
-		else if (score == 21)
-		{
-			text = "Just kidding";
+			text = "Now it's faster";
 		}
 		else if (score < 25)
 		{
@@ -128,19 +126,44 @@ public class GamePlayDialog : BaseDialog
 		}
 		else if (score < 40)
 		{
-			text = "I know it hard to control, but...";
-		}
-		else if (score == 40)
-		{
-			text = "Try your best";
+			text = "I know it hard to control";
 		}
 		else if (score < 45)
 		{
-			text = "You think I make it harder, hah ?";
+			text = "You good, but..";
+		}
+		else if (score < 50)
+		{
+			text = "Beware the 50";
+		}
+		else if (score == 50)
+		{
+			text = "Faster";
+			GameManager.Instance.ballManager.ChangeSpeed(1.55f);
+		}
+		else if (score == 51)
+		{
+			text = "Fasterr";
+			GameManager.Instance.ballManager.ChangeSpeed(1.6f);
+		}
+		else if (score == 52)
+		{
+			text = "Fasterrr";
+			GameManager.Instance.ballManager.ChangeSpeed(1.65f);
+		}
+		else if (score == 53)
+		{
+			text = "Fasterrrr";
+			GameManager.Instance.ballManager.ChangeSpeed(1.7f);
+		}
+		else if (score == 54)
+		{
+			text = "Fasterrrrr";
+			GameManager.Instance.ballManager.ChangeSpeed(1.75f);
 		}
 		else
 		{
-			text = "Wow, you're good";
+			text = "Feel like F1, hah ?";
 		}
 
 		if (score % 5 == 0 && score > 0)

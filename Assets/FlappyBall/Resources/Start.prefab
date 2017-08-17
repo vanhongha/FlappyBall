@@ -271,7 +271,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1702097863185516
 GameObject:
   m_ObjectHideFlags: 1
@@ -877,7 +877,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 114816701117697824}
-        m_MethodName: OnClickStore
+        m_MethodName: OnClickSettings
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1203,6 +1203,7 @@ MonoBehaviour:
   ball: {fileID: 114730994565576806}
   buttons: {fileID: 1640599501284360}
   buttonPlay: {fileID: 1702097863185516}
+  settings: {fileID: 1712482195478948}
 --- !u!114 &114825555584767050
 MonoBehaviour:
   m_ObjectHideFlags: 1

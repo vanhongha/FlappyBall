@@ -155,7 +155,7 @@ TrailRenderer:
       atime0: 0
       atime1: 9830
       atime2: 65535
-      atime3: 0
+      atime3: 65535
       atime4: 0
       atime5: 0
       atime6: 0

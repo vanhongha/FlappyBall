@@ -1,10 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public enum SFX
 {
-	Button, Buy, Popup, Touch
+	Crash, Click, Jump, Popup, InNest, Lose, Highscore
 }
 
 public class SoundManager : MonoSingleton<SoundManager> {
@@ -12,11 +13,24 @@ public class SoundManager : MonoSingleton<SoundManager> {
 	protected bool music = true;
 	protected bool sfx = true;
 
+	public Sprite BgmOn_1;
+	public Sprite BgmOff_1;
+	public Sprite BgmOn_2;
+	public Sprite BgmOff_2;
+	public Sprite SfxOn_1;
+	public Sprite SfxOff_1;
+	public Sprite SfxOn_2;
+	public Sprite SfxOff_2;
+
 	public AudioSource backgroundMusic;
-	public AudioSource button;
-	public AudioSource buy_success;
+
+	public AudioSource crash;
+	public AudioSource click;
+	public AudioSource jump;
 	public AudioSource popup;
-	public AudioSource touch;
+	public AudioSource inNest;
+	public AudioSource lose;
+	public AudioSource highScore;
 
 	public bool IsBackgroundPlaying()
 	{
@@ -31,20 +45,27 @@ public class SoundManager : MonoSingleton<SoundManager> {
 	public void ToggleSfx(bool isOn)
 	{
 		this.sfx = isOn;
+		ToggleCertainSfx(crash, 0, 0.5f);
+		ToggleCertainSfx(click, 0, 1);
+		ToggleCertainSfx(jump, 0, 0.5f);
+		ToggleCertainSfx(popup, 0, 1);
+		ToggleCertainSfx(inNest, 0, 0.7f);
+		ToggleCertainSfx(lose, 0, 1f);
+		ToggleCertainSfx(highScore, 0, 1f);
+	}
 
-		if (this.sfx)
+	public void ToggleCertainSfx(AudioSource sfx, float min, float max) 
+	{
+		if (sfx != null)
 		{
-			button.volume = 0.5f;
-			buy_success.volume = 1f;
-			popup.volume = 1f;
-			touch.volume = 1f;
-		}
-		else
-		{
-			button.volume = 0f;
-			buy_success.volume = 0f;
-			popup.volume = 0f;
-			touch.volume = 0f;
+			if (this.sfx)
+			{
+				sfx.volume = max;
+			}
+			else
+			{
+				sfx.volume = min;
+			}
 		}
 	}
 
@@ -54,7 +75,7 @@ public class SoundManager : MonoSingleton<SoundManager> {
 
 		if (this.music)
 		{
-			backgroundMusic.volume = 0.8f;
+			backgroundMusic.volume = 0.3f;
 		}
 		else
 		{
@@ -66,39 +87,55 @@ public class SoundManager : MonoSingleton<SoundManager> {
 	{
 		switch (type)
 		{
-		case SFX.Button:
-			if (button.isPlaying)
+		case SFX.Crash: PlaySfx(crash, false); break;
+		case SFX.Click:	PlaySfx(click); break;
+		case SFX.Jump: PlaySfx(jump); break;
+		case SFX.Popup: PlaySfx(popup); break;
+		case SFX.InNest: PlaySfx(inNest); break;
+		case SFX.Lose: PlaySfx(lose); break;
+		case SFX.Highscore: PlaySfx(highScore); break;
+		}
+	}
+
+	public void PlaySfx(AudioSource audio, bool stop = true)
+	{
+		if (audio != null)
+		{
+			if (audio.isPlaying && stop)
 			{
-				button.Stop();
+				audio.Stop();
 			}
-			button.Play();
-			break;
-		case SFX.Buy:
-			if (buy_success.isPlaying)
+			audio.Play();
+		}
+	}
+
+	public void SetupSound(Image sprite, int type, bool toggle = false)
+	{
+		if (toggle)
+		{
+			if (type == 0 || type == 1)
 			{
-				buy_success.Stop();
+				ToggleMusic(!IsBackgroundPlaying());
 			}
-			buy_success.Play();
-			break;
-		case SFX.Popup:
-			if (popup.isPlaying)
+			else
 			{
-				popup.Stop();
+				ToggleSfx(!IsSfxPlaying());
 			}
-			popup.Play();
-			break;
-		case SFX.Touch:
-			if (touch.isPlaying)
-			{
-				touch.Stop();
-			}
-			touch.Play();
-			break;
+		}
+		
+		switch (type)
+		{
+		case 0: sprite.sprite = IsBackgroundPlaying() ? BgmOn_1 : BgmOff_1; break;
+		case 1: sprite.sprite = IsBackgroundPlaying() ? BgmOn_2 : BgmOff_2; break;
+		case 2: sprite.sprite = IsSfxPlaying() ? SfxOn_1 : SfxOff_1; break;
+		case 3: sprite.sprite = IsSfxPlaying() ? SfxOn_2 : SfxOff_2; break;
 		}
 	}
 
 	public void Start()
 	{
 		backgroundMusic.Play();
+		ToggleSfx(true);
+		ToggleMusic(true);
 	}
 }

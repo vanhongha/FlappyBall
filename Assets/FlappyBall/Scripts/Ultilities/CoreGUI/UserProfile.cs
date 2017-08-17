@@ -9,13 +9,6 @@ public class UserProfile : MonoSingleton<UserProfile> {
 	public string androidPath;
 	public string iosPath;
 
-	public Sprite noSound;
-	public Sprite hasSound;
-	public Sprite noSound_2;
-	public Sprite hasSound_2;
-	public Sprite noAds;
-	public Sprite hasAds;
-
 	private string KEY_HIGH_SCORE = "KEY_HIGH_SCORE";
 	private string KEY_DIAMOND = "KEY_DIAMOND";
 	private string KEY_ADS = "KEY_ADS";
@@ -157,19 +150,6 @@ public class UserProfile : MonoSingleton<UserProfile> {
 	{
 		return this.ads;
 	}
-	public void SetupNoAds(Button adsButton)
-	{
-		if (HasAds())
-		{
-			adsButton.GetComponent<Image>().sprite = hasAds;
-			adsButton.interactable = true;
-		}
-		else
-		{
-			adsButton.GetComponent<Image>().sprite = noAds;
-			adsButton.interactable = false;
-		}
-	}
 	#endregion
 
 	#region BALL
@@ -202,34 +182,6 @@ public class UserProfile : MonoSingleton<UserProfile> {
 		else
 		{
 			return false;
-		}
-	}
-	#endregion
-
-	#region SOUND
-	public void SetupSound(Button soundButton, int type)
-	{
-		if (type == 0)
-		{
-			if (SoundManager.Instance.IsBackgroundPlaying())
-			{
-				soundButton.GetComponent<Image>().sprite = hasSound;
-			}
-			else
-			{
-				soundButton.GetComponent<Image>().sprite = noSound;
-			}
-		}
-		else
-		{
-			if (SoundManager.Instance.IsBackgroundPlaying())
-			{
-				soundButton.GetComponent<Image>().sprite = hasSound_2;
-			}
-			else
-			{
-				soundButton.GetComponent<Image>().sprite = noSound_2;
-			}
 		}
 	}
 	#endregion

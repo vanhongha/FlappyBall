@@ -76,4 +76,9 @@ public class Ball : MonoBehaviour {
 			GameManager.Instance.EndGame();
 		}
 	}
+
+	public void ChangeSpeed(float speed)
+	{
+		this.speed = speed;
+	}
 }

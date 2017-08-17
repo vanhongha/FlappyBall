@@ -46,7 +46,6 @@ public class GameManager : MonoSingleton<GameManager> {
 		ballManager.OnStart();
 		nestManager.OnStart();
 		state = GameState.PLAY;
-		//ground.SetActive(true);
 		border.SetActive(true);
 		play.UpdateScore(score);
 	}
@@ -75,6 +74,7 @@ public class GameManager : MonoSingleton<GameManager> {
 		{
 			play.Lose();
 			StartCoroutine(EndProcess(2f));
+			SoundManager.Instance.PlaySfx(SFX.Lose);
 		}
 	}
 
@@ -85,10 +85,10 @@ public class GameManager : MonoSingleton<GameManager> {
 		ballManager.OnEnd();
 		nestManager.OnEnd();
 		state = GameState.PAUSE;
-		//ground.SetActive(false);
 		border.SetActive(false);
 		UserProfile.Instance.SetHighScore(score);
 		UserProfile.Instance.AddDiamond(score * 10);
+		EffectManager.Instance.Clear();
 		play.GameOver(score);
 	}
 

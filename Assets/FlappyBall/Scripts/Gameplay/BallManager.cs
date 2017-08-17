@@ -56,4 +56,9 @@ public class BallManager : MonoBehaviour {
 	{
 		return ball.transform.position;
 	}
+
+	public void ChangeSpeed(float scale)
+	{
+		ball.ChangeSpeed(scale * speed);
+	}
 }

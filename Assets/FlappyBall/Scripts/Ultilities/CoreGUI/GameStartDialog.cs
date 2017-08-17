@@ -14,8 +14,9 @@ public class GameStartDialog : BaseDialog {
 	public Image ball;
 	public GameObject buttons;
 	public GameObject buttonPlay;
+	public GameObject settings;
 
-	public void Awake()
+	protected virtual void Awake()
 	{
 		if (!UserProfile.Instance.HasAds())
 		{
@@ -40,6 +41,14 @@ public class GameStartDialog : BaseDialog {
 		}
 	}
 
+	public void Update()
+	{
+		if (ball != null)
+		{
+			ball.transform.Rotate(new Vector3(0, 0, Time.deltaTime * 50f));
+		}
+	}
+
 	public virtual void OnClickPlay()
 	{
 		this.EffectClose<GamePlayDialog>("Play");
@@ -58,6 +67,17 @@ public class GameStartDialog : BaseDialog {
 		}
 
 		FBManager.Instance.ShareLink();
+	}
+
+	public void OnClickSettings()
+	{
+		settings.transform.DOLocalPath(new Vector3[] { settings.transform.localPosition + Vector3.up * 325f }, 0.5f);
+		GUIManager.Instance.OnShowDialog<SettingDialog>("Settings", this);
+	}
+
+	public void HideSetting()
+	{
+		settings.transform.DOLocalPath(new Vector3[] { settings.transform.localPosition - Vector3.up * 325f }, 0.5f);
 	}
 
 	public void OnClickNoAds()
