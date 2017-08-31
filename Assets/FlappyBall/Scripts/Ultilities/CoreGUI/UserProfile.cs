@@ -142,7 +142,7 @@ public class UserProfile : MonoSingleton<UserProfile> {
 		if (HasAds())
 		{
 			this.ads = false;
-			AdManager.Instance.HideBanner();
+			AdManager.Instance.RemoveBanner();
 			PlayerPrefs.SetInt(KEY_ADS, HasAds() ? 1 : 0);
 		}
 	}

@@ -1,24 +1,51 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
+using UnityEngine.UI;
 
 public class Background : MonoBehaviour {
+
+	public class ColorHSV
+	{
+		public float h;
+		public float s;
+		public float v;
+		public ColorHSV() { }
+		public ColorHSV(Color color)
+		{
+			Color.RGBToHSV(color, out h, out s, out v);
+		}
+		public Color ToColor()
+		{
+			return Color.HSVToRGB(h, s, v);
+		}
+		public Color ToColorOffset(float h, float s, float v)
+		{
+			return Color.HSVToRGB(this.h + h, this.s + s, this.v + v);
+		}
+	}
 
 	private MeshRenderer meshRenderer;
 	private MeshFilter meshFilter;
 	private Vector2 offset;
+	private Image image;
+	private Color startColor;
+	private Color endColor;
 	public float scrollSpeed = 5f;
 
 	// ------------------ MONO_BEHAVIOR -------------------- //
 
 	protected void Start()
 	{
-		Init();
+		image = GetComponent<Image>();
+		startColor = image.color;
+		endColor = new ColorHSV(startColor).ToColorOffset(0, 0.05f, 0);
 	}
 
 	protected void Update()
 	{
-		
+		image.color = Color.Lerp(startColor, endColor, Mathf.PingPong(Time.time, 3f));
 	}
 
 	protected void LateUpdate()
