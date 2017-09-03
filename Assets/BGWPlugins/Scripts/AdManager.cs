@@ -268,7 +268,7 @@ public class AdManager : PluginSingleton<AdManager> {
 		//DontDestroyOnLoad(gameObject);
 		this.InitFacebook();
 		this.InitAdmob();
-		//this.InitChartboost();
+		this.InitChartboost();
 	}
 
 	public void ShowBanner()

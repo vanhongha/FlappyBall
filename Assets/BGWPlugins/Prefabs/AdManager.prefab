@@ -92,7 +92,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0dfbe8a367e13e4f949ade9c4ccd070, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  facebookID: YOUR_PLACEMENT_ID
+  androidFacebookID:
+    banner: YOUR_PLACEMENT_ID
+    instertitial: YOUR_PLACEMENT_ID
+  iosFacebookID:
+    banner: YOUR_PLACEMENT_ID
+    instertitial: YOUR_PLACEMENT_ID
   admobAndroid:
     banner: YOUR_PLACEMENT_ID
     instertitial: YOUR_PLACEMENT_ID
@@ -101,3 +106,6 @@ MonoBehaviour:
     banner: YOUR_PLACEMENT_ID
     instertitial: YOUR_PLACEMENT_ID
     rewardVideo: YOUR_PLACEMENT_ID
+  banner: 1
+  video: 1
+  testMode: 1
