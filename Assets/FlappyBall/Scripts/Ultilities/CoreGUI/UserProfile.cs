@@ -8,6 +8,7 @@ public class UserProfile : MonoSingleton<UserProfile> {
 	public string gameName;
 	public string androidPath;
 	public string iosPath;
+    public int ballCount = 10;
 
 	private string KEY_HIGH_SCORE = "KEY_HIGH_SCORE";
 	private string KEY_DIAMOND = "KEY_DIAMOND";
@@ -34,14 +35,14 @@ public class UserProfile : MonoSingleton<UserProfile> {
 		this.ads = true;
 		this.highScore = 0;
 		this.balls = new List<int>();
-		for (int i = 0; i < 15; i++)
+		for (int i = 0; i < ballCount; i++)
 		{
 			this.balls.Add(0);
 		}
 		this.balls[0] = 1;
 		this.currentBall = 0;
 
-		for (int i = 0; i < 15; i++)
+		for (int i = 0; i < ballCount; i++)
 		{
 			if (PlayerPrefs.HasKey(KEY_BALLS + i))
 			{
@@ -72,12 +73,17 @@ public class UserProfile : MonoSingleton<UserProfile> {
 		PlayerPrefs.SetInt(KEY_DIAMOND, this.diamond);
 		PlayerPrefs.SetInt(KEY_ADS, HasAds() ? 1 : 0);
 		PlayerPrefs.SetInt(KEY_HIGH_SCORE, this.highScore);
-		for (int i = 0; i < 15; i++)
+		for (int i = 0; i < ballCount; i++)
 		{
 			PlayerPrefs.SetInt(KEY_BALLS + i, this.balls[i]);
 		}
 		PlayerPrefs.SetInt(KEY_CURRENT_BALL, this.currentBall);
 	}
+    [ContextMenu("Clear Data")]
+    public void ClearData()
+    {
+        PlayerPrefs.DeleteAll();
+    }
 
 	#region HIGHSCORE
 	public bool IsHighScore(int newScore)

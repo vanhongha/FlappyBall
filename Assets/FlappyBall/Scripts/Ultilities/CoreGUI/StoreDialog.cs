@@ -21,7 +21,7 @@ public class StoreDialog : BaseDialog {
 	{
 		base.OnShow(transf, data);
 		gameName.text = UserProfile.Instance.gameName;
-		for (int i = 0; i < 15; i++)
+		for (int i = 0; i < UserProfile.Instance.ballCount; i++)
 		{
 			GameObject item = Instantiate(itemPrebab, panel);
 			item.GetComponent<ItemBall>().Init(i, 20000, group);

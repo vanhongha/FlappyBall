@@ -54,4 +54,12 @@ public class GameOverDialog : GameStartDialog {
 		content.transform.localPosition = Vector3.left * 1200;
 		content.transform.DOLocalPath(new Vector3[] { Vector3.zero }, 0.75f);
 	}
+
+    public override void OnClickPlay()
+    {
+        checkClick = true;
+        buttonPlay.GetComponent<Button>().interactable = false;
+        buttonPlay.transform.DOLocalRotate(new Vector3(0, 0, -180), 0.5f)
+            .OnComplete(() => { checkClick = false; base.OnClickPlay(); });
+    }
 }

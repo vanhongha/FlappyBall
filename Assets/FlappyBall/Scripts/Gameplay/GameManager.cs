@@ -47,7 +47,8 @@ public class GameManager : MonoSingleton<GameManager> {
 		nestManager.OnStart();
 		state = GameState.PLAY;
 		border.SetActive(true);
-		play.UpdateScore(score);
+        PauseGame();
+        GUIManager.Instance.OnShowDialog<PreStartDialog>("PreStart", (System.Action)(delegate { play.UpdateScore(score); }));
 	}
 	
 	public void RestartGame()

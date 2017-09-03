@@ -108,14 +108,14 @@ public class NotifyDialog : BaseDialog
 
 	public void BuyNoAds()
 	{
-		Button noAdsButton = (Button)data;
-		IAPManager.Instance.BuyNoAds();
+        IAPManager.Instance.BuyNoAds();
 
-		if (!UserProfile.Instance.HasAds())
-		{
-			noAdsButton.gameObject.SetActive(false);
-		}
-		OnCloseDialog();
+        if (data != null)
+        {
+            Button noAdsButton = (Button)data;
+            noAdsButton.interactable = false;
+        }
+        OnCloseDialog();
 	}
 
 	public void Confirm()

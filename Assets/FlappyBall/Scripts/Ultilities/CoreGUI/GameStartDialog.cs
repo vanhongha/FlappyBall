@@ -13,6 +13,7 @@ public class GameStartDialog : BaseDialog {
 	public Button noAdsButton;
 	public Image ball;
 	public GameObject buttons;
+    public GameObject newButttons;
 	public GameObject buttonPlay;
 	public GameObject settings;
 
@@ -20,7 +21,7 @@ public class GameStartDialog : BaseDialog {
 	{
 		if (!UserProfile.Instance.HasAds())
 		{
-			noAdsButton.gameObject.SetActive(false);
+			noAdsButton.interactable = false;
 		}
 	}
 
@@ -71,7 +72,7 @@ public class GameStartDialog : BaseDialog {
 
 	public void OnClickSettings()
 	{
-		settings.transform.DOLocalPath(new Vector3[] { settings.transform.localPosition + Vector3.up * 325f }, 0.5f);
+		//settings.transform.DOLocalPath(new Vector3[] { settings.transform.localPosition + Vector3.up * 325f }, 0.5f);
 		GUIManager.Instance.OnShowDialog<SettingDialog>("Settings", this);
 	}
 
@@ -82,7 +83,10 @@ public class GameStartDialog : BaseDialog {
 
 	public void OnClickNoAds()
 	{
-		NotifyDialog notify = GUIManager.Instance.OnShowNotiFyDialog("Notify", NotifyType.NOADS, noAdsButton);
+        if (UserProfile.Instance.HasAds())
+        {
+            NotifyDialog notify = GUIManager.Instance.OnShowNotiFyDialog("Notify", NotifyType.NOADS, noAdsButton);
+        }
 	}
 
 	public void OnClickCBV()
@@ -123,9 +127,11 @@ public class GameStartDialog : BaseDialog {
 
 		buttonPlay.transform.DOScale(0, 0.75f);
 		gameName.transform.DOLocalPath(new Vector3[] { gameName.transform.localPosition + Vector3.up * 200 }, 0.75f);
-		buttons.transform.DOLocalPath(new Vector3[] { buttons.transform.localPosition + Vector3.down * 200 }, 0.75f)
-			.OnComplete(delegate { base.OnCloseDialog(); GUIManager.Instance.OnShowDialog<T>(dialog); });
-	}
+		//buttons.transform.DOLocalPath(new Vector3[] { buttons.transform.localPosition + Vector3.down * 200 }, 0.75f)
+		//	.OnComplete(delegate { base.OnCloseDialog(); GUIManager.Instance.OnShowDialog<T>(dialog); });
+        newButttons.transform.DOScale(0, 0.75f)
+            .OnComplete(delegate { base.OnCloseDialog(); GUIManager.Instance.OnShowDialog<T>(dialog); });
+    }
 
 	public virtual void EffectShow()
 	{
@@ -133,9 +139,11 @@ public class GameStartDialog : BaseDialog {
 		buttonPlay.transform.localScale = Vector3.zero;
 		gameName.transform.localPosition += Vector3.up * 200;
 		buttons.transform.localPosition += Vector3.down * 200;
+        newButttons.transform.localScale = Vector3.zero;
 
 		buttonPlay.transform.DOScale(1, 0.75f);
 		gameName.transform.DOLocalPath(new Vector3[] { gameName.transform.localPosition - Vector3.up * 200 }, 0.75f);
 		buttons.transform.DOLocalPath(new Vector3[] { buttons.transform.localPosition - Vector3.down * 200 }, 0.75f);
-	}
+        newButttons.transform.DOScale(1, 0.75f);
+    }
 }
