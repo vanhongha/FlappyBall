@@ -101,7 +101,7 @@ public class GamePlayDialog : BaseDialog
 		else if (score == 15)
 		{
 			text = "Let's pump up";
-			GameManager.Instance.ballManager.ChangeSpeed(1.5f);
+			GameManager.Instance.ballManager.ChangeSpeed(1.25f);
 		}
 		else if (score < 20)
 		{
@@ -126,11 +126,11 @@ public class GamePlayDialog : BaseDialog
 		}
 		else if (score < 40)
 		{
-			text = "I know it hard to control";
+			text = "Wow, you good";
 		}
 		else if (score < 45)
 		{
-			text = "You good, but..";
+			text = "But..";
 		}
 		else if (score < 50)
 		{
@@ -139,32 +139,40 @@ public class GamePlayDialog : BaseDialog
 		else if (score == 50)
 		{
 			text = "Faster";
-			GameManager.Instance.ballManager.ChangeSpeed(1.55f);
+			GameManager.Instance.ballManager.ChangeSpeed(1.3f);
 		}
 		else if (score == 51)
 		{
 			text = "Fasterr";
-			GameManager.Instance.ballManager.ChangeSpeed(1.6f);
+			GameManager.Instance.ballManager.ChangeSpeed(1.35f);
 		}
 		else if (score == 52)
 		{
 			text = "Fasterrr";
-			GameManager.Instance.ballManager.ChangeSpeed(1.65f);
+			GameManager.Instance.ballManager.ChangeSpeed(1.40f);
 		}
 		else if (score == 53)
 		{
 			text = "Fasterrrr";
-			GameManager.Instance.ballManager.ChangeSpeed(1.7f);
+			GameManager.Instance.ballManager.ChangeSpeed(1.45f);
 		}
 		else if (score == 54)
 		{
 			text = "Fasterrrrr";
-			GameManager.Instance.ballManager.ChangeSpeed(1.75f);
+			GameManager.Instance.ballManager.ChangeSpeed(1.50f);
 		}
-		else
+		else if (score <= 60)
 		{
 			text = "Feel like F1, hah ?";
 		}
+        else if (score < 65)
+        {
+            text = "I'm off, good luck";
+        }
+        else
+        {
+            text = "";
+        }
 
 		if (score % 5 == 0 && score > 0)
 		{

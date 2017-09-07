@@ -52,10 +52,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FB_Android:
-    link: 
-    name: 
-    description: 
+    link: https://play.google.com/store/apps/details?id=com.bestgameworld.puzzlefree.flippydunk
+    name: Flippy Dunk!
+    description: Join us to play this fun game!!!
   FB_IOS:
-    link: 
-    name: 
-    description: 
+    link: https://itunes.apple.com/us/app/flippy-dunk/id1280463574
+    name: Flippy Dunk!
+    description: Join us to play this fun game!!!

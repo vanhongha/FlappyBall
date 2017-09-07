@@ -11,47 +11,47 @@ public class IAPManager : MonoSingleton<IAPManager>, IStoreListener
 
 
 #if UNITY_ANDROID
-	private static string PRODUCT_1000_DIAMOND = "com.bestgameworld.puzzlefree.duocolor.diamond_0";
-	private static string PRODUCT_3500_DIAMOND = "com.bestgameworld.puzzlefree.duocolor.diamond_1";
-	private static string PRODUCT_7000_DIAMOND = "com.bestgameworld.puzzlefree.duocolor.diamond_2";
-	private static string PRODUCT_10000_DIAMOND = "com.bestgameworld.puzzlefree.duocolor.diamond_3";
-	private static string PRODUCT_15000_DIAMOND = "com.bestgameworld.puzzlefree.duocolor.diamond_4";
-	private static string PRODUCT_20000_DIAMOND = "com.bestgameworld.puzzlefree.duocolor.diamond_5";
-	private static string PRODUCT_30000_DIAMOND = "com.bestgameworld.puzzlefree.duocolor.diamond_6";
-	private static string PRODUCT_40000_DIAMOND = "com.bestgameworld.puzzlefree.duocolor.diamond_7";
-	private static string PRODUCT_50000_DIAMOND = "com.bestgameworld.puzzlefree.duocolor.diamond_8";
-	private static string PRODUCT_70000_DIAMOND = "com.bestgameworld.puzzlefree.duocolor.diamond_9";
-	private static string PRODUCT_150000_DIAMOND = "com.bestgameworld.puzzlefree.duocolor.diamond_10";
-	private static string PRODUCT_NOADS = "com.bestgameworld.puzzlefree.duocolor.noads";
+	private static string PRODUCT_1000_DIAMOND = "com.studiogamefree.puzzle.flippydunk.diamond_0";
+	private static string PRODUCT_3500_DIAMOND = "com.studiogamefree.puzzle.flippydunk.diamond_1";
+	private static string PRODUCT_7000_DIAMOND = "com.studiogamefree.puzzle.flippydunk.diamond_2";
+	private static string PRODUCT_10000_DIAMOND = "com.studiogamefree.puzzle.flippydunk.diamond_3";
+	private static string PRODUCT_15000_DIAMOND = "com.studiogamefree.puzzle.flippydunk.diamond_4";
+	private static string PRODUCT_20000_DIAMOND = "com.studiogamefree.puzzle.flippydunk.diamond_5";
+	private static string PRODUCT_30000_DIAMOND = "com.studiogamefree.puzzle.flippydunk.diamond_6";
+	private static string PRODUCT_40000_DIAMOND = "com.studiogamefree.puzzle.flippydunk.diamond_7";
+	private static string PRODUCT_50000_DIAMOND = "com.studiogamefree.puzzle.flippydunk.diamond_8";
+	private static string PRODUCT_70000_DIAMOND = "com.studiogamefree.puzzle.flippydunk.diamond_9";
+	private static string PRODUCT_150000_DIAMOND = "com.studiogamefree.puzzle.flippydunk.diamond_10";
+	private static string PRODUCT_NOADS = "com.studiogamefree.puzzle.flippydunk.noads";
 #elif UNITY_IOS
-	private static string PRODUCT_1000_DIAMOND = "com.bestgameworld.puzzlefree.duocolor.diamond_0";
-	private static string PRODUCT_3500_DIAMOND = "com.bestgameworld.puzzlefree.duocolor.diamond_1";
-	private static string PRODUCT_7000_DIAMOND = "com.bestgameworld.puzzlefree.duocolor.diamond_2";
-	private static string PRODUCT_10000_DIAMOND = "com.bestgameworld.puzzlefree.duocolor.diamond_3";
-	private static string PRODUCT_15000_DIAMOND = "com.bestgameworld.puzzlefree.duocolor.diamond_4";
-	private static string PRODUCT_20000_DIAMOND = "com.bestgameworld.puzzlefree.duocolor.diamond_5";
-	private static string PRODUCT_30000_DIAMOND = "com.bestgameworld.puzzlefree.duocolor.diamond_6";
-	private static string PRODUCT_40000_DIAMOND = "com.bestgameworld.puzzlefree.duocolor.diamond_7";
-	private static string PRODUCT_50000_DIAMOND = "com.bestgameworld.puzzlefree.duocolor.diamond_8";
-	private static string PRODUCT_70000_DIAMOND = "com.bestgameworld.puzzlefree.duocolor.diamond_9";
-	private static string PRODUCT_150000_DIAMOND = "com.bestgameworld.puzzlefree.duocolor.diamond_10";
-	private static string PRODUCT_NOADS = "com.bestgameworld.puzzlefree.duocolor.noads";
+	private static string PRODUCT_1000_DIAMOND = "com.studiogamefree.puzzle.flippydunk.diamond_0";
+	private static string PRODUCT_3500_DIAMOND = "com.studiogamefree.puzzle.flippydunk.diamond_1";
+	private static string PRODUCT_7000_DIAMOND = "com.studiogamefree.puzzle.flippydunk.diamond_2";
+	private static string PRODUCT_10000_DIAMOND = "com.studiogamefree.puzzle.flippydunk.diamond_3";
+	private static string PRODUCT_15000_DIAMOND = "com.studiogamefree.puzzle.flippydunk.diamond_4";
+	private static string PRODUCT_20000_DIAMOND = "com.studiogamefree.puzzle.flippydunk.diamond_5";
+	private static string PRODUCT_30000_DIAMOND = "com.studiogamefree.puzzle.flippydunk.diamond_6";
+	private static string PRODUCT_40000_DIAMOND = "com.studiogamefree.puzzle.flippydunk.diamond_7";
+	private static string PRODUCT_50000_DIAMOND = "com.studiogamefree.puzzle.flippydunk.diamond_8";
+	private static string PRODUCT_70000_DIAMOND = "com.studiogamefree.puzzle.flippydunk.diamond_9";
+	private static string PRODUCT_150000_DIAMOND = "com.studiogamefree.puzzle.flippydunk.diamond_10";
+	private static string PRODUCT_NOADS = "com.studiogamefree.puzzle.flippydunk.noads";
 #else
-	private static string PRODUCT_1000_DIAMOND = "com.bestgameworld.puzzlefree.duocolor.diamond_0";
-	private static string PRODUCT_3500_DIAMOND = "com.bestgameworld.puzzlefree.duocolor.diamond_1";
-	private static string PRODUCT_7000_DIAMOND = "com.bestgameworld.puzzlefree.duocolor.diamond_2";
-	private static string PRODUCT_10000_DIAMOND = "com.bestgameworld.puzzlefree.duocolor.diamond_3";
-	private static string PRODUCT_15000_DIAMOND = "com.bestgameworld.puzzlefree.duocolor.diamond_4";
-	private static string PRODUCT_20000_DIAMOND = "com.bestgameworld.puzzlefree.duocolor.diamond_5";
-	private static string PRODUCT_30000_DIAMOND = "com.bestgameworld.puzzlefree.duocolor.diamond_6";
-	private static string PRODUCT_40000_DIAMOND = "com.bestgameworld.puzzlefree.duocolor.diamond_7";
-	private static string PRODUCT_50000_DIAMOND = "com.bestgameworld.puzzlefree.duocolor.diamond_8";
-	private static string PRODUCT_70000_DIAMOND = "com.bestgameworld.puzzlefree.duocolor.diamond_9";
-	private static string PRODUCT_150000_DIAMOND = "com.bestgameworld.puzzlefree.duocolor.diamond_10";
-	private static string PRODUCT_NOADS = "com.bestgameworld.puzzlefree.duocolor.noads";
+	private static string PRODUCT_1000_DIAMOND = "com.studiogamefree.puzzle.flippydunk.diamond_0";
+	private static string PRODUCT_3500_DIAMOND = "com.studiogamefree.puzzle.flippydunk.diamond_1";
+	private static string PRODUCT_7000_DIAMOND = "com.studiogamefree.puzzle.flippydunk.diamond_2";
+	private static string PRODUCT_10000_DIAMOND = "com.studiogamefree.puzzle.flippydunk.diamond_3";
+	private static string PRODUCT_15000_DIAMOND = "com.studiogamefree.puzzle.flippydunk.diamond_4";
+	private static string PRODUCT_20000_DIAMOND = "com.studiogamefree.puzzle.flippydunk.diamond_5";
+	private static string PRODUCT_30000_DIAMOND = "com.studiogamefree.puzzle.flippydunk.diamond_6";
+	private static string PRODUCT_40000_DIAMOND = "com.studiogamefree.puzzle.flippydunk.diamond_7";
+	private static string PRODUCT_50000_DIAMOND = "com.studiogamefree.puzzle.flippydunk.diamond_8";
+	private static string PRODUCT_70000_DIAMOND = "com.studiogamefree.puzzle.flippydunk.diamond_9";
+	private static string PRODUCT_150000_DIAMOND = "com.studiogamefree.puzzle.flippydunk.diamond_10";
+	private static string PRODUCT_NOADS = "com.studiogamefree.puzzle.flippydunk.noads";
 #endif
 
-	void Start()
+    void Start()
 	{
 		// If we haven't set up the Unity Purchasing reference
 		if (m_StoreController == null)

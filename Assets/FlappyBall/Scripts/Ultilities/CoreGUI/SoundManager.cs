@@ -45,11 +45,11 @@ public class SoundManager : MonoSingleton<SoundManager> {
 	public void ToggleSfx(bool isOn)
 	{
 		this.sfx = isOn;
-		ToggleCertainSfx(crash, 0, 0.5f);
+		ToggleCertainSfx(crash, 0, 0.25f);
 		ToggleCertainSfx(click, 0, 1);
 		ToggleCertainSfx(jump, 0, 0.5f);
 		ToggleCertainSfx(popup, 0, 1);
-		ToggleCertainSfx(inNest, 0, 0.7f);
+		ToggleCertainSfx(inNest, 0, 1f);
 		ToggleCertainSfx(lose, 0, 1f);
 		ToggleCertainSfx(highScore, 0, 1f);
 	}
@@ -75,7 +75,7 @@ public class SoundManager : MonoSingleton<SoundManager> {
 
 		if (this.music)
 		{
-			backgroundMusic.volume = 0.3f;
+			backgroundMusic.volume = 0.2f;
 		}
 		else
 		{

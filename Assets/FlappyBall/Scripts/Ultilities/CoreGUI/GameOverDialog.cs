@@ -17,12 +17,18 @@ public class GameOverDialog : GameStartDialog {
 		int score = (int)data;
 		scoreText.text = score.ToString();
 		addedDiamond.text = "+" + (score * 10).ToString();
-		int rand = Random.Range(0, 5);
-		if (rand == 0)
+		
+		if (score >= 5)
 		{
 			AdManager.Instance.ShowInterstitial();
 		}
-	}
+
+        int rand = Random.Range(0, 5);
+        if (rand == 0)
+        {
+            GUIManager.Instance.OnShowNotiFyDialog("Notify", NotifyType.RATE);
+        }
+    }
 
 	public override void EffectClose<T>(string dialog)
 	{

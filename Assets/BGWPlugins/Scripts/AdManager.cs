@@ -132,67 +132,100 @@ public class AdManager : PluginSingleton<AdManager> {
 	private GoogleMobileAds.Api.BannerView bannerView;
 	private GoogleMobileAds.Api.InterstitialAd interstitial;
 	private GoogleMobileAds.Api.RewardBasedVideoAd rewardVideo;
+    private bool admobReward = false;
 
-	private void LoadBannerAdmob()
-	{
-		this.bannerView = new GoogleMobileAds.Api.BannerView(admob.banner, GoogleMobileAds.Api.AdSize.SmartBanner, AdPosition.Top);
-		if (this.bannerView != null)
-		{
-			bn = "Banner inited";
-		}
-		this.bannerView.LoadAd(new AdRequest.Builder().Build());
-		this.bannerView.OnAdLoaded += (delegate (System.Object sender, EventArgs args) {
-			this.isBannerAdmobLoaded = true;
-			this.bannerView.Hide();
-			this.ShowBanner();
-			bn = "Banner Loaded";
-		});
-		this.bannerView.OnAdFailedToLoad += (delegate (System.Object sender, AdFailedToLoadEventArgs args) {
-			bn = "Banner fail to load";
-			this.bannerView.LoadAd(new AdRequest.Builder().Build());
-		});
-	}
-	private void LoadInterstitialAdmob()
-	{ 
-		this.interstitial = new GoogleMobileAds.Api.InterstitialAd(admob.instertitial);
-		if (this.interstitial != null)
-		{
-			vi = "interstitial inited";
-		}
-		this.interstitial.OnAdClosed += (delegate (System.Object sender, EventArgs args) {
-			vi = "interstitial video new load";
-			this.interstitial.LoadAd(new AdRequest.Builder().Build());
-		});
-		this.interstitial.OnAdLoaded += (delegate (System.Object sender, EventArgs args) {
-			vi = "Video Loaded";
-		});
-		this.interstitial.OnAdFailedToLoad += (delegate (System.Object sender, AdFailedToLoadEventArgs args) {
-			vi = "Video fail to load";
-			this.bannerView.LoadAd(new AdRequest.Builder().Build());
-		});
-		this.interstitial.LoadAd(new AdRequest.Builder().Build());
-	}
-	private void LoadRewardVideoAdmob()
-	{
-		this.rewardVideo = RewardBasedVideoAd.Instance;
-		if (this.rewardVideo != null)
-		{
-			rv = "rewardVideo inited";
-		}
-		this.rewardVideo.OnAdClosed += (delegate (System.Object sender, EventArgs args) {
-			rv = "Reward video new load";
-			this.rewardVideo.LoadAd(new AdRequest.Builder().Build(), admob.rewardVideo);
-		});
-		this.rewardVideo.OnAdLoaded += (delegate (System.Object sender, EventArgs args) {
-			rv = "Reward video Loaded";
-		});
-		this.rewardVideo.OnAdFailedToLoad += (delegate (System.Object sender, AdFailedToLoadEventArgs args) {
-			rv = "Reward video fail to load";
-			this.rewardVideo.LoadAd(new AdRequest.Builder().Build(), admob.rewardVideo);
-		});
-		this.rewardVideo.LoadAd(new AdRequest.Builder().Build(), admob.rewardVideo);
-	}
-	private void ShowBannerAdmob()
+    private void LoadBannerAdmob()
+    {
+        this.bannerView = new GoogleMobileAds.Api.BannerView(admob.banner, GoogleMobileAds.Api.AdSize.SmartBanner, AdPosition.Top);
+        if (this.bannerView != null)
+        {
+            bn = "Banner inited";
+        }
+        this.bannerView.LoadAd(new AdRequest.Builder().Build());
+        this.bannerView.OnAdLoaded += (delegate (System.Object sender, EventArgs args) {
+            this.alreadyShowBanner = false;
+            this.isBannerAdmobLoaded = true;
+            this.bannerView.Hide();
+            this.ShowBanner();
+            bn = "Banner Loaded";
+        });
+        this.bannerView.OnAdFailedToLoad += (delegate (System.Object sender, AdFailedToLoadEventArgs args) {
+            bn = "Banner fail to load";
+            if (Application.internetReachability != NetworkReachability.NotReachable)
+            {
+                this.bannerView.LoadAd(new AdRequest.Builder().Build());
+            }
+        });
+    }
+    private void LoadInterstitialAdmob()
+    {
+        this.interstitial = new GoogleMobileAds.Api.InterstitialAd(admob.instertitial);
+        if (this.interstitial != null)
+        {
+            vi = "interstitial inited";
+        }
+        this.interstitial.OnAdClosed += (delegate (System.Object sender, EventArgs args) {
+            vi = "interstitial video new load";
+            this.interstitial.LoadAd(new AdRequest.Builder().Build());
+        });
+        this.interstitial.OnAdLoaded += (delegate (System.Object sender, EventArgs args) {
+            vi = "Video Loaded";
+        });
+        this.interstitial.OnAdFailedToLoad += (delegate (System.Object sender, AdFailedToLoadEventArgs args) {
+            vi = "Video fail to load";
+            if (Application.internetReachability != NetworkReachability.NotReachable)
+            {
+                this.interstitial.LoadAd(new AdRequest.Builder().Build());
+            }
+        });
+        this.interstitial.LoadAd(new AdRequest.Builder().Build());
+    }
+    private void LoadRewardVideoAdmob()
+    {
+        this.rewardVideo = RewardBasedVideoAd.Instance;
+        if (this.rewardVideo != null)
+        {
+            rv = "rewardVideo inited";
+        }
+        this.rewardVideo.OnAdLoaded += (delegate (System.Object sender, EventArgs args) {
+            rv = "Reward video Loaded";
+        });
+        this.rewardVideo.OnAdFailedToLoad += (delegate (System.Object sender, AdFailedToLoadEventArgs args) {
+            rv = "Reward video fail to load";
+            if (Application.internetReachability != NetworkReachability.NotReachable)
+            {
+                this.rewardVideo.LoadAd(new AdRequest.Builder().Build(), admob.rewardVideo);
+            }
+        });
+        this.rewardVideo.OnAdClosed += (delegate (System.Object sender, EventArgs args) {
+            rv = "Reward video closed. Shame";
+            Time.timeScale = 1f;
+            this.rewardVideo.LoadAd(new AdRequest.Builder().Build(), admob.rewardVideo);
+            if (!admobReward)
+            {
+                
+            }
+            else
+            {
+                admobReward = false;
+            }
+        });
+        this.rewardVideo.OnAdRewarded += (delegate (System.Object sender, Reward reward)
+        {
+            rv = "Reward video get rewared";
+            admobReward = true;
+            Time.timeScale = 1f;
+            /* GET REWARD */
+
+        });
+        this.rewardVideo.OnAdLeavingApplication += (delegate (System.Object sender, EventArgs args) {
+            rv = "Reward video leaving";
+            Time.timeScale = 0f;
+        });
+
+        this.rewardVideo.LoadAd(new AdRequest.Builder().Build(), admob.rewardVideo);
+    }
+    private void ShowBannerAdmob()
 	{
 		if (isBannerAdmobLoaded)
 		{
@@ -226,10 +259,16 @@ public class AdManager : PluginSingleton<AdManager> {
 		LoadInterstitialAdmob();
 		LoadRewardVideoAdmob();
 	}
+    private void RenewAdmob()
+    {
+        this.bannerView.LoadAd(new AdRequest.Builder().Build());
+        this.interstitial.LoadAd(new AdRequest.Builder().Build());
+        this.rewardVideo.LoadAd(new AdRequest.Builder().Build(), admob.rewardVideo);
+    }
 
-	//------------------------------ CHARTBOOST --------------------------------//
+    //------------------------------ CHARTBOOST --------------------------------//
 
-	private void ShowInterstitialChartboost()
+    private void ShowInterstitialChartboost()
 	{
 		if (Chartboost.hasInterstitial(CBLocation.Default))
 		{
@@ -262,18 +301,32 @@ public class AdManager : PluginSingleton<AdManager> {
 	public bool banner = true;
 	public bool video = true;
 	private bool alreadyShowBanner = false;
+    private NetworkReachability network;
 
-	private void Awake()
+    private void Awake()
 	{
 		//DontDestroyOnLoad(gameObject);
-		this.InitFacebook();
+		//this.InitFacebook();
 		this.InitAdmob();
-		this.InitChartboost();
-	}
+        //this.InitChartboost();
+        network = Application.internetReachability;
+    }
+    private void FixedUpdate()
+    {
+        if (Application.internetReachability != NetworkReachability.NotReachable 
+            && network != Application.internetReachability)
+        {
+            network = Application.internetReachability;
+            if (network != NetworkReachability.NotReachable)
+            {
+                RenewAdmob();
+            }
+        }
+    }
 
-	public void ShowBanner()
+    public void ShowBanner()
 	{
-		if (!UserProfile.Instance.HasAds() || !banner || alreadyShowBanner)
+		if (!UserProfile.Instance.HasAds() || !banner || alreadyShowBanner || Application.internetReachability == NetworkReachability.NotReachable)
 		{
 			return;
 		}
@@ -291,7 +344,7 @@ public class AdManager : PluginSingleton<AdManager> {
 	}
 	public void ShowInterstitial()
 	{
-		if (!UserProfile.Instance.HasAds() || !video)
+		if (!UserProfile.Instance.HasAds() || !video || Application.internetReachability == NetworkReachability.NotReachable)
 		{
 			return;
 		}

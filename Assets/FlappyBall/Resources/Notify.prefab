@@ -439,8 +439,8 @@ MonoBehaviour:
   accept: {fileID: 114909592736699254}
   decline: {fileID: 114373426534665474}
   close: {fileID: 114506668004803248}
-  acceptText: {fileID: 0}
-  declineText: {fileID: 0}
+  acceptText: {fileID: 114398826094473948}
+  declineText: {fileID: 114365857993795018}
 --- !u!114 &114398826094473948
 MonoBehaviour:
   m_ObjectHideFlags: 1

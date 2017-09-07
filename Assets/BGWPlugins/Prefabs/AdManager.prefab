@@ -99,13 +99,13 @@ MonoBehaviour:
     banner: YOUR_PLACEMENT_ID
     instertitial: YOUR_PLACEMENT_ID
   admobAndroid:
-    banner: YOUR_PLACEMENT_ID
-    instertitial: YOUR_PLACEMENT_ID
-    rewardVideo: YOUR_PLACEMENT_ID
+    banner: ca-app-pub-8138314746899986/1478890138
+    instertitial: ca-app-pub-8138314746899986/5265612979
+    rewardVideo: ca-app-pub-8138314746899986/6387122954
   admobIOS:
-    banner: YOUR_PLACEMENT_ID
-    instertitial: YOUR_PLACEMENT_ID
-    rewardVideo: YOUR_PLACEMENT_ID
+    banner: ca-app-pub-8138314746899986/8670984442
+    instertitial: ca-app-pub-8138314746899986/1914004400
+    rewardVideo: ca-app-pub-8138314746899986/6591616017
   banner: 1
   video: 1
-  testMode: 1
+  testMode: 0
