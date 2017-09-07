@@ -313,8 +313,7 @@ public class AdManager : PluginSingleton<AdManager> {
     }
     private void FixedUpdate()
     {
-        if (Application.internetReachability != NetworkReachability.NotReachable 
-            && network != Application.internetReachability)
+        if (network == NetworkReachability.NotReachable)
         {
             network = Application.internetReachability;
             if (network != NetworkReachability.NotReachable)

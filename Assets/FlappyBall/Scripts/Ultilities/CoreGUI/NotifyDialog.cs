@@ -110,7 +110,7 @@ public class NotifyDialog : BaseDialog
 	{
         IAPManager.Instance.BuyNoAds();
 
-        if (data != null)
+        if (data != null && !UserProfile.Instance.HasAds())
         {
             Button noAdsButton = (Button)data;
             noAdsButton.interactable = false;

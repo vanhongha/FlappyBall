@@ -24,7 +24,7 @@ public class StoreDialog : BaseDialog {
 		for (int i = 0; i < UserProfile.Instance.ballCount; i++)
 		{
 			GameObject item = Instantiate(itemPrebab, panel);
-			item.GetComponent<ItemBall>().Init(i, 20000, group);
+			item.GetComponent<ItemBall>().Init(i, 3000, group);
 		}
 		EffectShow();
 	}
